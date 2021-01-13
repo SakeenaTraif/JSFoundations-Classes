@@ -42,12 +42,13 @@ class Point {
  * let wallet = new Wallet(money);
  **********************************************************/
 class Wallet {
-  // implement Wallet!
-  constructor(money = 0) {}
+  constructor(money = 0) {
+    this.money=money;
+  }
 
-  credit = amount => {};
+  credit = amount =>  consloe.log`${amount - this.money}`;
 
-  debit = amount => {};
+  debit = amount => consloe.log`${amount - this.money}`;
 }
 
 /**********************************************************
@@ -62,7 +63,12 @@ class Wallet {
  * let person = new Person(name, x, y);
  **********************************************************/
 class Person {
-  // implement Person!
+  constructor (name,location,wallet =0){
+    this.name= name;
+    this.location= Point;
+    this.wallet= Wallet;
+  }
+
 }
 
 /**********************************************************
@@ -80,8 +86,9 @@ class Person {
  *
  * new vendor = new Vendor(name, x, y);
  **********************************************************/
-class Vendor {
-  // implement Vendor!
+class Vendor extends Person{
+  super(name,location,wallet =0,range,price);
+
 }
 
 /**********************************************************
@@ -100,8 +107,8 @@ class Vendor {
  *
  * new customer = new Customer(name, x, y);
  **********************************************************/
-class Customer {
-  // implement Customer!
+class Customer extends Person {
+super(name,)
 }
 
 export { Point, Wallet, Person, Customer, Vendor };
