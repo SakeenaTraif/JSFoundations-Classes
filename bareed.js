@@ -43,12 +43,12 @@ class Point {
  **********************************************************/
 class Wallet {
   constructor(money = 0) {
-    this.money=money;
+    this.money = money;
   }
 
-  credit = amount => this.money+= amount;
+  credit = (amount) => {this.money += amount;};
 
-  debit = amount => this.money-= amount;
+  debit = (amount) => {this.money -= amount;};
 }
 
 /**********************************************************
@@ -87,11 +87,8 @@ moveTo = (point) => {this.location = point;};
  * new vendor = new Vendor(name, x, y);
  **********************************************************/
 class Vendor extends Person{
-  constructor(name,x,y,range = 5,price = 1){
-  super(name,x,y);
-  this.range = range;
-  this.price = price;
-}
+  range = 5;
+  price = 1;
 
 sellTo = (customer,numberOfIceCreams) => {
   this.moveTo(customer.location);
@@ -126,11 +123,12 @@ class Customer extends Person {
 _isInRange = (vendor) => this.location.distanceTo(vendor.location) <= vendor.range;
 
 _haveEnoughMoney = (vendor, numberOfIceCreams) => 
-  (this.wallet.money >= vendor.price * numberOfIceCreams);
+  this.wallet.money >= vendor.price * numberOfIceCreams;
 
   requestIceCream = (vendor, numberOfIceCreams) => {
-    if (this._isInRange(vendor) && this._haveEnoughMoney(vendor, numberOfIceCreams))
-    { vendor.sellTo(this,numberOfIceCreams);}
+    if (this._isInRange(vendor) && this._haveEnoughMoney(vendor, numberOfIceCreams)) {
+         vendor.sellTo(this,numberOfIceCreams);
+        }
   };
 }
 export { Point, Wallet, Person, Customer, Vendor };
